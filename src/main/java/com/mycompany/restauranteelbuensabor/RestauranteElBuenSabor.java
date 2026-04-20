@@ -88,10 +88,8 @@ System.out.println();
 
 if(Utilidades.validar()){ // Patron 2: Dependencia externa fuerte
 Imprimir.mostrarPedido();
-}else{
-System.out.println("No hay productos en el pedido actual."); // Patron 8
-System.out.println("Use la opcion 2 para agregar productos."); // Patron 8
-continuar=true;} // Patron 1: variable innecesaria
+}
+// Patron 1: variable innecesaria
 
 System.out.println();
 
