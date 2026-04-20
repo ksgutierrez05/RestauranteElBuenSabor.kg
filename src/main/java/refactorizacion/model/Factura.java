@@ -4,7 +4,6 @@
  */
 package refactorizacion.model;
 
-
 public class Factura {
 
     private final Pedido pedido;
@@ -17,7 +16,6 @@ public class Factura {
     public static int numeroFactura = 1;
     private static final int MIN_ITEMS_DESCUENTO = 3;
 
-   
     public Factura(Pedido pedido, int numero) {
         this.pedido = pedido;
         this.numero = numero;
@@ -26,7 +24,8 @@ public class Factura {
     public double subtotal() {
         return pedido.calcularSubtotal();
     }
-
+    
+    // El IVA se aplica después del descuento para evitar sobrecálculo del impuesto
     public double calcularDescuento() {
         if (pedido.contarItemsDiferentes() > MIN_ITEMS_DESCUENTO) {
             return subtotal() * DESCUENTO;
@@ -34,9 +33,11 @@ public class Factura {
         return 0;
     }
 
+    // El IVA se calcula sobre el subtotal ya descontado, segun DIAN 2024
     public double calcularIVA() {
         return (subtotal() - DESCUENTO) * IVA;
     }
+    // La propina solo se activa cuando el consumo supera un umbral mínimo de compra
 
     public double calcularPropina() {
         double base = subtotal() - DESCUENTO + calcularIVA();
@@ -54,6 +55,5 @@ public class Factura {
     public Pedido getPedido() {
         return pedido;
     }
-    
-    
+
 }

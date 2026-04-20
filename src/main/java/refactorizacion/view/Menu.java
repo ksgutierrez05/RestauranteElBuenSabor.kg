@@ -64,7 +64,7 @@ public class Menu {
                         break;
                     }
 
-                    if (mesaActual == 0) {
+                    if (mesaActual == 0) {    // Se evita reiniciar la mesa automáticamente para no perder el contexto del pedido activo
                         System.out.print("Mesa: ");
                         int mesa = sc.nextInt();
 

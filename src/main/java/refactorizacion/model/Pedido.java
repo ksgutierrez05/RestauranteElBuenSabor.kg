@@ -7,6 +7,9 @@ package refactorizacion.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * El pedido se mantiene en memoria hasta generar factura o reiniciar mesa
+ */
 public class Pedido {
 
     private final List<ItemPedido> items = new ArrayList<>();
